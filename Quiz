@@ -1,0 +1,189 @@
+#include <iostream>
+#include <string>
+#include <chrono>
+#include <thread>
+
+char guess; // Answer user inputs for question.
+int total;  // Total score.
+
+class Question {
+public:
+    // Constructor to set values
+    Question(std::string q, std::string a1, std::string a2, std::string a3, std::string a4, char ca, int pa)
+        : Question_Text(q), answer_1(a1), answer_2(a2), answer_3(a3), answer_4(a4), correct_answer(ca), Question_Score(pa) {}
+
+    void askQuestion();
+
+private:
+    std::string Question_Text;
+    std::string answer_1;
+    std::string answer_2;
+    std::string answer_3;
+    std::string answer_4;
+    char correct_answer;
+    int Question_Score;
+};
+
+// Function to simulate loading
+void simulateLoading() {
+    std::cout << "Loading ";
+    for (int i = 0; i < 10; ++i) {
+        std::cout << ".";
+        std::this_thread::sleep_for(std::chrono::milliseconds(500)); // Sleep for 500 milliseconds (0.5 seconds)
+        std::cout.flush(); 
+    }
+    std::cout << " Complete!" << std::endl;
+}
+
+int main() {
+    std::cout << R"(
+ _    _      _                            _          _                _____       _     
+| |  | |    | |                          | |        | | | |          |  _  |     (_)    
+| |  | | ___| | ___ ___  _ __ ___   ___  | |_ ___   | |_| |__   ___  | | | |_   _ _ ____
+| |/\| |/ _ \ |/ __/ _ \| '_ ` _ \ / _ \ | __/ _ \  | __| '_ \ / _ \ | | | | | | | |_  /
+\  /\  /  __/ | (_| (_) | | | | | |  __/ | || (_) | | |_| | | |  __/ \ \/' / |_| | |/ / 
+ \/  \/ \___|_|\___\___/|_| |_| |_|\___|  \__\___/   \__|_| |_|\___|  \_/\_\\__,_|_/___|
+
+----------------------------------------------By: Janrei Theo P. Delfin---------------------------------------------
+    )" << "\n";
+
+    std::cout << "Press enter to start...\n";
+    std::cin.get();
+
+    // Get the user's name.
+    std::string name;
+    std::cout << "What's your name?\n";
+    std::cin >> name;
+    std::cout << "\n";
+
+    // Ask if the user wants to start the quiz.
+    std::string respond;
+    std::cout << "Are you ready to start the quiz, " << name << "? Yes/No.\n";
+    std::cin >> respond;
+
+    // If the user says yes, the quiz begins.
+    if (respond == "Yes" || respond == "yes") {
+        std::cout << "\n";
+        simulateLoading();  // Display loading message
+        std::cout << "Good luck!\n";
+        std::cout << "\n";
+        std::cout << "Press enter to continue.";
+        std::cin.ignore();
+    } else {
+        std::cout << "\n";
+        std::cout << "Goodbye!\n";
+        std::cin.ignore();
+        std::cin.get();
+        return 0;
+    }
+
+    Question q1("1.) Saan Binaril si Jose Rizal?", "Luneta Park", "Likod", "Bagumbayan", "Ulo", 'c', 4);
+    Question q2("2.) Sino ang pumatay kay Lapu-Lapu?", "Magellan", "Kusinero", "Esmeralda", "Datu Bangkaya", 'b', 4);
+    Question q3("3.) Sino ang nagsabi ng I SHALL RETURN?", "Papa mong bumili ng Gatas", "Mark Zuckerberg", "Goerge Gregory", "Douglas MacArthur", 'd', 4);
+    Question q4("4.) Sino ang Pambansang bayani ng Pilipinas?", "Jose Rizal", "Leni Lugaw", "Luckie Delfin", "Kitty Duterte", 'a', 4);
+    Question q5("5.) Ano ang tawag nila kay Heneral Luna?", "Ang Mabangis na Heneral", "Lunatico", "Heneral Artikulo Uno", "Goyo", 'c', 4);  
+    Question q6("6.) Sino ang nagDisenyo para sa Philippine National Flag?", "Vesteda", "Emilio Aguinaldo", "Auntie Junalyn", "Leonardo da Vinci", 'b', 4);
+	Question q7("7.) Ano ang pinakamatandang lungsod sa Pilipinas?", "Cebu", "Laserna", "Estancia", "Andagao", 'a', 4);
+ 	Question q8("8.) Sino ang nagtatag at supremo ng Katipunan?", "Shanks", "Mickey Mouse", "Riley Reid", "Andres Bonifacio", 'd', 4);
+	Question q9("9.) Ilang magkakapatid sina Jose Rizal?", "74", "Only Child", "11", "87", 'c', 4);
+	Question q10("10.) Ano ang Capital of the Philippines?", "Kalibo", "Manila", "Malay", "Tigayon", 'b', 4);
+	Question q11("11.) Sino ang pinakabatang Heneral ng Pilipinas?", "Johnny Sins", "Janrei Theo", "Habibi Halakata", "Gregorio del Pilar", 'd', 4);
+	Question q12("12.) Ano ang Pambansang hayop?", "kalabaw", "Pikachu", "Agila", "Askal", 'a', 4);
+	Question q13("13.) What is the meaning of BBC?", "Big Black Children", "Big Black Cock  roach", "Big Black Chicken", "British Broadcasting Corporation", 'd', 4);
+	Question q14("14.) What is the name of the smallest unit of life?", "Atom", "Molecules", "Cell", "Mitochondria", 'c', 4);
+	Question q15("15.) What is the only Human Body that can't repair itself?", "Liver", "Teeth", "Kidney", "Pancreas", 'b', 4);
+	Question q16("16.) It is a branch of Science that deals with living organisms and their vital processes?", "Physics", "Biology", "Chemistry", "Ecology", 'b', 4);
+	Question q17("17.) It is the Smallest unit of matter that retains all of the chemical properties of an element?", "Bacteria", "Microorganism", "Biology", "Atom", 'd', 4);
+	Question q18("18.) What is the largest Planet in our Solar System?", "Jupiter", "Mars", "Saturn", "Neptune", 'a', 4);
+	Question q19("19.) What is the process of Plants making food", "Respiration", "Evaporation", "Transpiration", "Photosynthesis", 'd', 4);
+	Question q20("20.) How many Bones does a Human have?", "152", "300", "124", "206", 'd', 4);
+	Question q21("21.) What is the process of Liquid turning into a Gas?", "Condensation", "Sublimation", "Evaporation", "Transpiration", 'c', 4);
+	Question q22("22.) What is the Largest Ocean on Earth?", "Atlantic Ocean", "Pacific Ocean", "Southern Ocean", "Arctic Ocean", 'b', 4);
+	Question q23("23.) What is the Chemical Symbol of Gold?", "Ag", "Mg", "Au", "Fe", 'c', 4);
+	Question q24("24.) Which Element has the chemical symbol 'Fe'", "Gold", "Aluminium", "Silver", "Iron", 'd', 4);
+	Question q25("25.) Which of the following is not an example of a chemical reaction?", "Boiling Water", "Burning Wood", "Rusting of Iron", "Digestion of Food", 'a', 4);           
+	              
+    q1.askQuestion();
+    q2.askQuestion();
+    q3.askQuestion();
+    q4.askQuestion();
+    q5.askQuestion();
+    q6.askQuestion();
+    q7.askQuestion();
+    q8.askQuestion();
+    q9.askQuestion();
+    q10.askQuestion();
+    q11.askQuestion();
+    q12.askQuestion();
+    q13.askQuestion();
+    q14.askQuestion();
+    q15.askQuestion();
+    q16.askQuestion();
+    q17.askQuestion();
+    q18.askQuestion();
+    q19.askQuestion();
+    q20.askQuestion();
+    q21.askQuestion();
+    q22.askQuestion();
+    q23.askQuestion();
+    q24.askQuestion();
+    q25.askQuestion();
+
+
+    std::cout << "Your Total Score is " << total << " out of 100!\n";
+    std::cout << "\n";
+
+    if (total > 69) {
+        std::cout << R"(
+
+__  __               ____                           ____
+\ \/ /___  __  __   / __ \____ ______________  ____/ / /
+ \  / __ \/ / / /  / /_/ / __ `/ ___/ ___/ _ \/ __  / / 
+ / / /_/ / /_/ /  / ____/ /_/ (__  |__  )  __/ /_/ /_/  
+/_/\____/\__,_/  /_/    \__,_/____/____/\___/\__,_(_)   
+
+    )" << "\n";
+        std::cout << "\n";
+        std::cin.get();
+        std::cin.ignore();
+        return 0;
+    } else {
+        std::cout << "You failed... Sorry, better luck next time.\n";
+        std::cout << "\n";
+    }
+
+    std::cin.get();
+    std::cin.ignore();
+    return 0;
+}
+
+void Question::askQuestion() {
+    std::cout << "\n";
+    std::cout << Question_Text << "\n";
+    std::cout << "\na. " << answer_1 << "\n";
+    std::cout << "b. " << answer_2 << "\n";
+    std::cout << "c. " << answer_3 << "\n";
+    std::cout << "d. " << answer_4 << "\n";
+    std::cout << "\n";
+
+    std::cout << "What is your answer?" << "\n";
+    std::cin >> guess;
+
+    if (guess == correct_answer) {
+        std::cout << "\n";
+        std::cout << "Correct!" << "\n";
+        total = total + Question_Score;
+        std::cout << "\n";
+        std::cout << "Press enter to continue." << "\n";
+        std::cin.get();
+        std::cin.ignore();
+    } else {
+        std::cout << "\n";
+        std::cout << "Sorry, you're wrong..." << "\n";
+        std::cout << "The correct answer is " << correct_answer << "." << "\n";
+        std::cout << "\n";
+        std::cout << "Press enter to continue." << "\n";
+        std::cin.get();
+        std::cin.ignore();
+    }
+}
